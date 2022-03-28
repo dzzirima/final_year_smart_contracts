@@ -17,16 +17,16 @@ struct User{
     address useraddress;
 
     /**List of  all medical records of a user */
-    MedRecord [] records;
+     MedRecord [] records;
 
     /*** List  of all users who has access to medical records */
-    User [] accessors;
+    //User [] accessors;
 
     /**If  an address is mapped to true , the user can view 
         the medical records of that paticular user
      */
 
-     mapping(address =>bool) can_access;
+    //mapping(address =>bool) can_access;
 
 }
 

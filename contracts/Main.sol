@@ -12,7 +12,10 @@ contract Main{
     User[] public users;
     uint totalUsers;
 
+    //mapping for users and their role
+
     /**funtions to do the magic */
+    mapping (string =>User) public userIdMappings;
 
     function createUser(string memory _id ,string memory _role , string memory _firstname , string memory _lastname  ) public {
         // User storage  newUser = users[totalUsers];
@@ -23,12 +26,15 @@ contract Main{
         newUser.firstname = _firstname;
         newUser.lastname = _lastname;
 
+
+        userIdMappings[_id] = newUser;
+       
     }
 
-    // function getAllUsers () public view returns(){
+    function getAllUsers () public view returns(User [] memory){
 
-    //     return users;
+        return users;
 
-    // }
+    }
 
 }

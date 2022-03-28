@@ -1,0 +1,36 @@
+errors....
+TypeError: Recursive type not allowed for public or external contract functions.
+  --> contracts/Main.sol:34:49:
+   |
+34 |     function getAllUsers () public view returns(User [] memory){
+   |                                                 ^^^^^^^^^^^^^^
+
+
+Error HH600: Compilation failed
+
+..................................................
+
+TypeError: Types in storage containing (nested) mappings cannot be assigned to.
+  --> contracts/Main.sol:30:9:
+   |
+30 |         userIdMappings[_id] = newUser;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+
+TypeError: Types containing (nested) mappings can only be parameters or return variables of internal or library functions.
+  --> contracts/Main.sol:34:49:
+   |
+34 |     function getAllUsers () public view returns(User [] memory){
+   |                                                 ^^^^^^^^^^^^^^
+
+
+TypeError: Type struct User[] is only valid in storage because it contains a (nested) mapping.
+  --> contracts/Main.sol:34:49:
+   |
+34 |     function getAllUsers () public view returns(User [] memory){
+   |                                                 ^^^^^^^^^^^^^^
+
+
+Error HH600: Compilation failed
+
+.....................................................................

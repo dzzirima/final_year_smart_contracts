@@ -13,8 +13,13 @@ async function main() {
 
   /** creating a new user */
   const newUser = await main.createUser("gafa","admin","Gafa","Gafa surname")
+  //const newUser2 = await main.createUser("gafa","admin","Gafa","Gafa surname")
 
-  console.log(newUser)
+
+
+  console.log("getting all the users now")
+  let allUsers = await main.getAllUsers()
+  console.log("Users found ",allUsers)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
