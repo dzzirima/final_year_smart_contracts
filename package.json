@@ -1,0 +1,14 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "This is the final year smart contracts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David T Zirima",
+  "license": "ISC",
+  "devDependencies": {
+    "hardhat": "^2.9.2"
+  }
+}
