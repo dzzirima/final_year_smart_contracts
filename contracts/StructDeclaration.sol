@@ -23,7 +23,7 @@ struct User{
     User [] accessors;
 
     /**If  an address is mapped to true , the user can view 
-    the medical records of that paticular user
+        the medical records of that paticular user
      */
 
      mapping(address =>bool) can_access;
