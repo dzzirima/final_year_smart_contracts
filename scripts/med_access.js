@@ -19,6 +19,10 @@ async function main() {
 
 
   /** verifying the user to be verified */
+
+
+//verify the user
+let verification = await main.approveUser("gafa")
 let user = await main.getUser("gafa")
 console.log(user)
 

@@ -48,6 +48,11 @@ contract Main{
 
         /**find  the user in the user array */
         User  storage foundUser = userIdMappings[_id];
+
+        bool verified = foundUser.verified;
+
+        console.log(verified);
+        
         foundUser.verified = true;
 
     }
