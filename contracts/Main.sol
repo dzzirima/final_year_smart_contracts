@@ -28,13 +28,30 @@ contract Main{
 
 
         userIdMappings[_id] = newUser;
+
        
     }
 
     function getAllUsers () public view returns(User [] memory){
-
         return users;
 
     }
+
+    //function to get the user
+    function getUser (string memory id) public view returns(User memory){
+
+        return userIdMappings[id];
+
+    }
+
+    function approveUser (string memory _id) external {
+
+        /**find  the user in the user array */
+        User  storage foundUser = userIdMappings[_id];
+        foundUser.verified = true;
+
+    }
+
+
 
 }

@@ -17,9 +17,14 @@ async function main() {
 
 
 
-  console.log("getting all the users now")
-  let allUsers = await main.getAllUsers()
-  console.log("Users found ",allUsers)
+
+  /** verifying the user to be verified */
+let user = await main.getUser("gafa")
+console.log(user)
+
+
+
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
