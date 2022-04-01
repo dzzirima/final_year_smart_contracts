@@ -9,18 +9,16 @@ import "hardhat/console.sol";
 contract Main{
 
     /**List of all users in the system */
-    User[] public users;
     uint totalUsers;
 
     //mapping for users and their role
 
-    /**funtions to do the magic */
     mapping (string =>User) public userIdMappings;
 
     function createUser(string memory _id ,string memory _role , string memory _firstname , string memory _lastname  ) public {
         // User storage  newUser = users[totalUsers];
 
-        User storage  newUser = users.push();
+        User memory  newUser;
         newUser.Id = _id;
         newUser.role = _role;
         newUser.firstname = _firstname;
@@ -29,11 +27,10 @@ contract Main{
 
         userIdMappings[_id] = newUser;
 
-       
     }
 
-    function getAllUsers () public view returns(User [] memory){
-        return users;
+    function getAllUsers () public view returns(string memory){
+        return userIdMappings["gafa"].firstname;
 
     }
 
@@ -43,19 +40,42 @@ contract Main{
         return userIdMappings[id];
 
     }
-
+/**function to approved the user especially for doctors */
     function approveUser (string memory _id) external {
 
         /**find  the user in the user array */
-        User  storage foundUser = userIdMappings[_id];
+        // User  storage foundUser = userIdMappings[_id];
+        // foundUser.verified = true;
+        userIdMappings[_id].verified = true;
 
-        bool verified = foundUser.verified;
-
-        console.log(verified);
-        
-        foundUser.verified = true;
+        console.log("finished changing the user");
 
     }
+
+    /** function to delete the user */
+
+    function removeUser (string memory _id) external {
+         
+        delete userIdMappings[_id]; // this  basically resets the index to default value
+    }
+
+    /** add accessors to the array of users */
+
+    function addAccessors (address accessor) external{
+        /**find  the user in the user array */
+    //     User  storage foundUser = userIdMappings["gafa"];
+
+    //    string[] storage  userAccessors  = foundUser.accessors;
+    //    userAccessors.push(accessor);
+    userIdMappings["gafa"].accessors.push(accessor);
+
+    }
+
+
+    /** 
+    Records related functions
+    
+     */
 
 
 
