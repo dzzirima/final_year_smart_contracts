@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 struct Prescription{
+        address owner;
         string recordId;
         address patientId;
         string phamacistId;
@@ -10,7 +11,7 @@ struct Prescription{
         uint quantityPrescribed;
         string drugDescription;
 
-        string [] accessors ;
+        // string [] accessors ;  access control based on a record
         
 
         uint256 prescibedDate;
@@ -27,19 +28,13 @@ struct User{
     string lastname;
     address useraddress;
 
-    /**List of  all medical records of a user */
-    // MedRecord [] records;
-
     /*** List  of all users who has access to medical records */
     address [] accessors;
-
-    /**If  an address is mapped to true , the user can view 
-        the medical records of that paticular user
-     */
-
-    //mapping(address =>bool) can_access;
-
 }
+
+
+
+
 
     
 

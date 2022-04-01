@@ -8,25 +8,29 @@ async function main() {
   const main = await Main.deploy();
 
   await main.deployed();
-
+  const [owner, addr1, addr2] = await ethers.getSigners();
 
 
   console.log("Greeter deployed to:", main.address);
 
   /** creating a new user */
-  const newUser = await main.createUser("gafa","admin","Gafa","Gafa surname")
-  const newUser2 = await main.createUser("gafa2","admin","Gafa","Gafa surname")
+  const newUser = await main.createUser("gafa","gafa","admin","Gafa","Gafa surname")
+
+  const user2 = await main.createUser(addr2,"gafa2","admin","Gafa","New User")
+
+  
   
 
   /** getting all the users */
-  // let usersFound = await main.getAllUsers()
-  // console.log(usersFound)
-
+  let usersFound = await main.getAllUsers(owner)
+   //console.log(usersFound)
 
 
 //verify the user
-let verification = await main.approveUser("gafa")
-let user = await main.getUser("gafa")
+let verification = await main.approveUser(owner)
+
+let user = await main.getUser(addr2)
+
 
 
 
@@ -36,19 +40,22 @@ let user = await main.getUser("gafa")
 // await main.removeUser("gafa")
 
 // adding accessors 
- let addingAccessor = await main.addAccessors('0x5FbDB2315678afecb367f032d93F642f64180aa3')
- let addingAccessor2 = await main.addAccessors('0x9665170f3789a48616987cc0c2BFFAa8F6e0A3F4')
+ let addingAccessor = await main.addAccessors("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3")
+let addingAccessor2 = await main.addAccessors("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3")
 
 
 
-//creating a record
-const createRecord = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Gafa surname")
-const createRecord2 = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Drug 2")
+// //creating a record
+// const createRecord = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Gafa surname")
+// const createRecord2 = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Drug 2")
 
 //get the user records
-const getUserRecords = await main.getUserRecords("0x5FbDB2315678afecb367f032d93F642f64180aa3")
+//const getUserRecords = await main.getUserRecords("0x5FbDB2315678afecb367f032d93F642f64180aa3")
 
-console.log(getUserRecords)
+
+user = await main.getUser("gafa")
+
+console.log(user)
 
 
 }
