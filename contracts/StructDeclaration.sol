@@ -1,11 +1,22 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-struct MedRecord{
-    address owner;
-    string recordId ;
-    uint256 datecreated;
-}
+struct Prescription{
+        string recordId;
+        address patientId;
+        string phamacistId;
+        string doctorId;
+
+        uint quantityPrescribed;
+        string drugDescription;
+
+        string [] accessors ;
+        
+
+        uint256 prescibedDate;
+        uint256    collectionDate;
+
+    }
 
 struct User{
     string Id;

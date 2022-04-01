@@ -41,9 +41,15 @@ let user = await main.getUser("gafa")
 
 
 
-user = await main.getUser("gafa")
+//creating a record
+const createRecord = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Gafa surname")
+const createRecord2 = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Drug 2")
 
-console.log(user)
+//get the user records
+const getUserRecords = await main.getUserRecords("0x5FbDB2315678afecb367f032d93F642f64180aa3")
+
+console.log(getUserRecords)
+
 
 }
 

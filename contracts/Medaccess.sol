@@ -1,59 +1,62 @@
-//SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.0;
+// //SPDX-License-Identifier: Unlicense
+// pragma solidity ^0.8.0;
 
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
-contract MedAcces {
+// contract MedAcces {
 
-    struct Prescription{
-        string recordId;
-        string patientId;
-        string phamacistId;
-        string doctorId;
+//     struct Prescription{
+//         string recordId;
+//         string patientId;
+//         string phamacistId;
+//         string doctorId;
 
-        uint quantityPrescribed;
-        string drugDescription;
+//         uint quantityPrescribed;
+//         string drugDescription;
 
-        string [] accessors ;
+//         string [] accessors ;
         
 
-        uint256 prescibedDate;
-        uint256    collectionDate;
+//         uint256 prescibedDate;
+//         uint256    collectionDate;
 
-    }
-    /**Array of all prescription Records */
-    Prescription[] public Prescriptions;
+//     }
+//     /**Array of all prescription Records */
+//     Prescription[] public Prescriptions;
 
 
-    /**functions to do the manipulation of the prescription */
+//     /**functions to do the manipulation of the prescription */
 
-   function  create(
-       string memory  _recordId,
-       string memory  _patientId,
-       string memory  _doctorId,
-        uint  _quantityPrescribed,
-       string memory  _drugDescription
-       ) public{
+//    function  create(
+//        string memory  _recordId,
+//        string memory  _patientId,
+//        string memory  _doctorId,
+//         uint  _quantityPrescribed,
+//        string memory  _drugDescription
+//        ) public{
 
-           string []  memory initial_accessors = new string[](5);
+//            Prescription memory myPrescription;
+        
 
-           // adding it to the  array of prescriptions
-           Prescriptions.push(Prescription(
-               {
-                   recordId:_recordId,
-                   patientId:_patientId,
-                   doctorId:_doctorId,
-                   phamacistId:_patientId,
 
-                   quantityPrescribed:_quantityPrescribed,
-                   drugDescription:_drugDescription,
 
-                   prescibedDate:block.timestamp,
-                   collectionDate:block.timestamp,
+//            // adding it to the  array of prescriptions
+//         //    Prescriptions.push(Prescription(
+//         //        {
+//         //            recordId:_recordId,
+//         //            patientId:_patientId,
+//         //            doctorId:_doctorId,
+//         //            phamacistId:_patientId,
 
-                   accessors: initial_accessors
-               }
-               ));
-   }
+//         //            quantityPrescribed:_quantityPrescribed,
+//         //            drugDescription:_drugDescription,
 
-}
+//         //            prescibedDate:block.timestamp,
+//         //            collectionDate:block.timestamp,
+
+//         //            accessors: new address(2)
+//         //        }
+//         //        ));
+//    }
+
+// }
