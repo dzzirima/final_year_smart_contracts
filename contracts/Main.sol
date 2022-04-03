@@ -12,6 +12,7 @@ contract Main {
 
     mapping(string => User) public userIdMappings;
     mapping(address => Prescription[]) medicalPrescriptions;
+    mapping (address =>address []) userRecordsAccessors;
 
     function createUser(
         string memory addr,
@@ -65,6 +66,8 @@ contract Main {
 
     function addAccessors(string memory userId, address accessor) external {
         userIdMappings[userId].accessors.push(accessor);
+
+        userRecordsAccessors[msg.sender].push(accessor);
     }
 
     /** 
@@ -104,6 +107,11 @@ contract Main {
     {
         
         return medicalPrescriptions[userAddr];
+    }
+
+    /**Accesor related functions */
+    function getAccessors() public view  returns (address[] memory){
+        return userRecordsAccessors[msg.sender];
     }
 
     /*** Helper functions to control access  to the record

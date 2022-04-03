@@ -55,6 +55,11 @@ let addingAccessor2 = await main.addAccessors("gafa","0x5FbDB2315678afecb367f032
 
 user = await main.getUser("gafa")
 
+//getting accessors of a record 
+
+let allUserAccessors = await main.getAccessors()
+console.log(allUserAccessors)
+
 console.log(user)
 
 
