@@ -60,7 +60,6 @@ user = await main.getUser("gafa")
 let allUserAccessors = await main.getAccessors()
 console.log(allUserAccessors)
 
-console.log(user)
 
 
 }

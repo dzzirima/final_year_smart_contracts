@@ -31,6 +31,10 @@ contract Main {
         newUser.lastname = _lastname;
 
         userIdMappings[addr] = newUser;
+
+        /**add that user to the list of their accesors */
+        userRecordsAccessors[msg.sender].push(msg.sender);
+
     }
 
     function getAllUsers(string memory userId) public view returns (string memory) {
