@@ -11,7 +11,7 @@ async function main() {
   const [owner, addr1, addr2] = await ethers.getSigners();
 
 
-  console.log("Greeter deployed to:", main.address);
+  console.log("Main  deployed to:", main.address);
 
   /** creating a new user */
   const newUser = await main.createUser("gafa","gafa","admin","Gafa","Gafa surname")

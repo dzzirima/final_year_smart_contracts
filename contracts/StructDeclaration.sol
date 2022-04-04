@@ -13,10 +13,8 @@ struct Prescription{
 
         // string [] accessors ;  access control based on a record
         
-
         uint256 prescibedDate;
         uint256    collectionDate;
-
     }
 
 struct User{
