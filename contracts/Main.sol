@@ -16,8 +16,7 @@ contract Main {
     User[] userArray;
 
     function createUser(
-        string memory addr,
-        string memory _id,
+        string memory _userId,
         string memory _role,
         string memory _firstname,
         string memory _lastname
@@ -26,15 +25,15 @@ contract Main {
 
         User memory newUser;
         
-        newUser.Id = _id;
+        newUser.Id = _userId;
         newUser.role = _role;
         newUser.firstname = _firstname;
         newUser.lastname = _lastname;
 
-        userIdMappings[addr] = newUser;
+        userIdMappings[_userId] = newUser;
 
         /**add that user to the list of their accesors */
-        userRecordsAccessors[_id].push(_id);
+        userRecordsAccessors[_userId].push(_userId);
 
         /**Add that user to an array */
         userArray.push(newUser);
