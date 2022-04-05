@@ -43,25 +43,28 @@ let addingAccessor3 = await main.addAccessors("gafa2","XXXRTGH")
 
 let myAccessors  = await main.getUserAccessors("gafa2")
 
-console.log(myAccessors)
+
 
 
 //remove an accessor
 let removeAccess = await main.removeAccessor("gafa2" , "tafadzwa")
-let addingAccessor4 = await main.addAccessors("gafa2","after deletation")
+let addingAccessor4 = await main.addAccessors("gafa","david")
 myAccessors  = await main.getUserAccessors("gafa2")
-console.log(myAccessors)
 
 
-return;
 
 // //creating a record
-// const createRecord = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Gafa surname")
-// const createRecord2 = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Drug 2")
+const createRecord = await main.createRecord("RecordId1","gafa","Dr Gafa",5,"Gafa surname")
+const createRecord2 = await main.createRecord("recordId2","gafa","Dr Gafa",5,"Drug 2")
+
+
 
 //get the user records
-//const getUserRecords = await main.getUserRecords("0x5FbDB2315678afecb367f032d93F642f64180aa3")
+const getUserRecords = await main.getUserRecords("gafa" , "david")
 
+console.log(getUserRecords)
+
+return;
 
 user = await main.getUser("gafa")
 

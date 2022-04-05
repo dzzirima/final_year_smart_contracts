@@ -127,10 +127,10 @@ contract Main {
         medicalPrescriptions[_patientId].push(myPrescription);
     }
 
-    function getUserRecords(string memory userAddr)
+    function getUserRecords(string memory userAddr , string  memory requestor)
         external
         view
-        onlyOwnerAccessRecords(userAddr)
+        onlyAccessors(userAddr ,requestor)
         returns (Prescription[] memory)
     {
         
@@ -149,11 +149,23 @@ contract Main {
 4.Only accessor
  */
 
-    modifier onlyAccessors(string  memory userId) {
+    modifier onlyAccessors(string  memory userId ,string  memory requestor ) {
         string[] memory currentAccessors = userIdMappings[userId].accessors;
+        console.log("In modifier");
+        bool canAccess;
+
+        for (uint256 index = 0; index < userRecordsAccessors[userId].length; index++) {
+        
+            if(keccak256(bytes(userRecordsAccessors[userId][index])) == keccak256(bytes(requestor))){
+               canAccess = true;
+            }
+        }
+
+        console.log(canAccess);
+
 
         require(
-            indexOf(currentAccessors,userId) >= 1,
+            canAccess,
             "Not allowed to view this users records"
         );
         // Underscore is a special character only used inside
