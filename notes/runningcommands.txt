@@ -1,1 +1,12 @@
-deployment to localhost    npx hardhat run scripts/sample-script.js --network localhost
+1. npx hardhat run scripts/sample-script.js --network localhost      ------------deployment to localhost    
+2. npx hardhat node                                                  ------------starting local blockchain
+
+running blockchain locally steps
+1.npx hardhat node
+2.npx hardhat run scripts/you_deployment_script.js --network localhost
+3.1 case 1:changed the smart contract
+    copy the new ABI and replace it with the new one
+    update the address where the new smart contract is deployed
+3.3 case 2:local blockchain shut down 
+    just update the address where it was deployed
+    there is n need to update the update the abi

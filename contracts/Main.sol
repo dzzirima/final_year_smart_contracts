@@ -11,8 +11,9 @@ contract Main {
     //mapping for users and their role
 
     mapping(string => User) public userIdMappings;
-    mapping(address => Prescription[]) medicalPrescriptions;
-    mapping (address =>address []) userRecordsAccessors;
+    mapping(string => Prescription[]) medicalPrescriptions;
+    mapping (string => string []) userRecordsAccessors;
+    User[] userArray;
 
     function createUser(
         string memory addr,
@@ -33,13 +34,18 @@ contract Main {
         userIdMappings[addr] = newUser;
 
         /**add that user to the list of their accesors */
-        userRecordsAccessors[msg.sender].push(msg.sender);
+        userRecordsAccessors[_id].push(_id);
+
+        /**Add that user to an array */
+        userArray.push(newUser);
 
     }
 
-    function getAllUsers(string memory userId) public view returns (string memory) {
-        return userIdMappings[userId].firstname;
+    function getAllUsers() public view returns ( User[] memory) {
+    return userArray;
     }
+
+
 
     //function to get the user
     function getUser(string memory userId)
@@ -68,10 +74,17 @@ contract Main {
 
     /** add accessors to the array of users */
 
-    function addAccessors(string memory userId, address accessor) external {
-        userIdMappings[userId].accessors.push(accessor);
+    function addAccessors(string memory userId, string memory accessor) external {
+        userIdMappings[userId].accessors.push("David zirima");
+        console.log(accessor);
 
-        userRecordsAccessors[msg.sender].push(accessor);
+        userRecordsAccessors[userId].push(accessor);
+    }
+
+    function getUserAccessors(string memory userId) public view returns ( string [] memory) {
+  
+    return userRecordsAccessors[userId];
+
     }
 
     /** 
@@ -84,7 +97,7 @@ contract Main {
     //1.all user medical records should be stored under one mapping array
     function createRecord(
         string memory _recordId,
-        address _patientId,
+        string memory  _patientId,
         string memory _doctorId,
         uint256 _quantityPrescribed,
         string memory _drugDescription
@@ -103,10 +116,10 @@ contract Main {
         medicalPrescriptions[_patientId].push(myPrescription);
     }
 
-    function getUserRecords(address userAddr)
+    function getUserRecords(string memory userAddr)
         external
         view
-        onlyOwnerAccessRecords
+        onlyOwnerAccessRecords(userAddr)
         returns (Prescription[] memory)
     {
         
@@ -114,8 +127,8 @@ contract Main {
     }
 
     /**Accesor related functions */
-    function getAccessors() public view  returns (address[] memory){
-        return userRecordsAccessors[msg.sender];
+    function getAccessors(string memory userAddr) public view  returns (string [] memory){
+        return userRecordsAccessors[userAddr];
     }
 
     /*** Helper functions to control access  to the record
@@ -126,10 +139,10 @@ contract Main {
  */
 
     modifier onlyAccessors(string  memory userId) {
-        address[] memory currentAccessors = userIdMappings[userId].accessors;
+        string[] memory currentAccessors = userIdMappings[userId].accessors;
 
         require(
-            indexOf(currentAccessors, msg.sender) >= 1,
+            indexOf(currentAccessors,userId) >= 1,
             "Not allowed to view this users records"
         );
         // Underscore is a special character only used inside
@@ -138,24 +151,24 @@ contract Main {
         _;
     }
 
-    modifier onlyOwnerAccessRecords() {
-        Prescription[] memory userPrescriptions = medicalPrescriptions[msg.sender];
+    modifier onlyOwnerAccessRecords(string memory accessorId) {
+        Prescription[] memory userPrescriptions = medicalPrescriptions[accessorId];
 
         //make sure the owner is the sender
         for(uint256 i = 0; i < userPrescriptions.length ; i++){
 
-            require(userPrescriptions[i].owner == msg.sender ,"Your are not the owner");
+            require( (keccak256(bytes(userPrescriptions[i].owner)) == keccak256(bytes(accessorId))) ,"Your are not the owner");
         }
         _;
     }
 
-    function indexOf(address[] memory arr, address searchFor)
+    function indexOf(string[] memory arr, string memory searchFor)
         public
         pure
         returns (uint256)
     {
         for (uint256 i = 0; i < arr.length; i++) {
-            if (arr[i] == searchFor) {
+            if ( keccak256(bytes(arr[i])) == keccak256(bytes(searchFor))) {
                 return i;
             }
         }

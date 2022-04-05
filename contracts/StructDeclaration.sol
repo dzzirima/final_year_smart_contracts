@@ -2,9 +2,9 @@
 pragma solidity ^0.8.0;
 
 struct Prescription{
-        address owner;
+        string owner;
         string recordId;
-        address patientId;
+        string patientId;
         string phamacistId;
         string doctorId;
 
@@ -24,10 +24,9 @@ struct User{
 
     string firstname;
     string lastname;
-    address useraddress;
 
     /*** List  of all users who has access to medical records */
-    address [] accessors;
+    string [] accessors;
 }
 
 

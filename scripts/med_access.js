@@ -16,14 +16,15 @@ async function main() {
   /** creating a new user */
   const newUser = await main.createUser("gafa","gafa","admin","Gafa","Gafa surname")
 
-  const user2 = await main.createUser(addr2,"gafa2","admin","Gafa","New User")
+  const user2 = await main.createUser("david","gafa2","admin","Gafa","New User")
+
+
 
   
   
 
   /** getting all the users */
-  let usersFound = await main.getAllUsers(owner)
-   //console.log(usersFound)
+  let usersFound = await main.getAllUsers()
 
 
 //verify the user
@@ -32,18 +33,17 @@ let verification = await main.approveUser(owner)
 let user = await main.getUser(addr2)
 
 
-
-
-
-
 //deleteing the user
 // await main.removeUser("gafa")
 
 // adding accessors 
- let addingAccessor = await main.addAccessors("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3")
-let addingAccessor2 = await main.addAccessors("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3")
+let addingAccessor = await main.addAccessors("gafa","David")
+let addingAccessor2 = await main.addAccessors("gafa2","tafadzwa")
 
+usersFound = await main.getUserAccessors("gafa2")
+console.log(usersFound)
 
+return;
 
 // //creating a record
 // const createRecord = await main.createRecord("gafa","0x5FbDB2315678afecb367f032d93F642f64180aa3","Dr Gafa",5,"Gafa surname")
