@@ -1,0 +1,20 @@
+N.B Blockchain Links I  am finding interesting 
+
+.............................. 1.Backend Intergration ...............................
+
+https://www.smashingmagazine.com/2021/01/nodejs-api-ethereum-blockchain/
+https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
+https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity
+https://ethereum.stackexchange.com/questions/65589/return-a-mapping-in-a-getall-function
+
+
+..................................2.Documentation ...................................
+
+https://docs.ethers.io/v5/getting-started/#installing
+https://solidity-by-example.org/
+https://allbigdatathings.blogspot.com/2019/04/uber-data-model.html
+
+
+......................3 Run Local  Blockchain....................................
+https://hardhat.org/getting-started/#quick-start
+https://trufflesuite.com/blog/introducing-ganache-7/index.html
