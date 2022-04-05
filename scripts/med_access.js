@@ -39,9 +39,19 @@ let user = await main.getUser(addr2)
 // adding accessors 
 let addingAccessor = await main.addAccessors("gafa","David")
 let addingAccessor2 = await main.addAccessors("gafa2","tafadzwa")
+let addingAccessor3 = await main.addAccessors("gafa2","XXXRTGH")
 
-usersFound = await main.getUserAccessors("gafa2")
-console.log(usersFound)
+let myAccessors  = await main.getUserAccessors("gafa2")
+
+console.log(myAccessors)
+
+
+//remove an accessor
+let removeAccess = await main.removeAccessor("gafa2" , "tafadzwa")
+let addingAccessor4 = await main.addAccessors("gafa2","after deletation")
+myAccessors  = await main.getUserAccessors("gafa2")
+console.log(myAccessors)
+
 
 return;
 

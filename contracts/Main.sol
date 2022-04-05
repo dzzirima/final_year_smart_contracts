@@ -75,11 +75,22 @@ contract Main {
     /** add accessors to the array of users */
 
     function addAccessors(string memory userId, string memory accessor) external {
-        userIdMappings[userId].accessors.push("David zirima");
-        console.log(accessor);
-
         userRecordsAccessors[userId].push(accessor);
     }
+
+     function removeAccessor(string memory userId, string memory accessor) external {
+        for (uint256 index = 0; index < userRecordsAccessors[userId].length; index++) {
+        
+            if(keccak256(bytes(userRecordsAccessors[userId][index])) == keccak256(bytes(accessor))){
+               // console.log( "found User" ,userRecordsAccessors[userId][index]);
+                delete userRecordsAccessors[userId][index];
+            }
+        }
+        
+    }
+
+
+
 
     function getUserAccessors(string memory userId) public view returns ( string [] memory) {
   
