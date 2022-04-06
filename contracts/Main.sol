@@ -18,6 +18,7 @@ contract Main {
     function createUser(
         string memory _userId,
         string memory _role,
+        string memory _email,
         string memory _firstname,
         string memory _lastname
     ) public {
@@ -27,8 +28,10 @@ contract Main {
         
         newUser.Id = _userId;
         newUser.role = _role;
+        newUser.email = _email;
         newUser.firstname = _firstname;
         newUser.lastname = _lastname;
+        
 
         userIdMappings[_userId] = newUser;
 

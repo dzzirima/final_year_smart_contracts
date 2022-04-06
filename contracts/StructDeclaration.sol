@@ -21,6 +21,7 @@ struct User{
     string Id;
     bool verified;
     string role;
+    string email;
 
     string firstname;
     string lastname;
