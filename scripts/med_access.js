@@ -14,9 +14,9 @@ async function main() {
   console.log("Main  deployed to:", main.address);
 
   /** creating a new user */
-  const newUser = await main.createUser("gafa","gafa","admin","Gafa")
+  const newUser = await main.createUser("gafa","gafa","gafa","admin","Gafa")
 
-  const user2 = await main.createUser("david","gafa2","admin","Gafa")
+  const user2 = await main.createUser("david","gafa","gafa2","admin","Gafa")
 
   /** getting all the users */
   let usersFound = await main.getAllUsers()
